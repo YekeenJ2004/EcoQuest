@@ -1,15 +1,24 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity } from 'react-native';
-import EditScreenInfo
- from '@/components/EditScreenInfo';
-export default function LoginPage({ navigation }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import EditScreenInfo from '@/components/EditScreenInfo';
+
+type RootStackParamList = {
+  Home: undefined;
+  Signup: undefined;
+};
+
+type LoginPageProps = {
+  navigation: NativeStackNavigationProp<RootStackParamList, 'Home'>;
+};
+
+export default function LoginPage({ navigation }: LoginPageProps) {
+  const [email, setEmail] = useState<string>(''); // Specify string type for email
+  const [password, setPassword] = useState<string>(''); // Specify string type for password
 
   const handleLogin = () => {
-  
     console.log('Login:', email, password);
-    navigation.replace('Home'); 
+    navigation.replace('Home');
   };
 
   return (
